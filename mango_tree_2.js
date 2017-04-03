@@ -133,7 +133,7 @@ class FruitTree {
       this._health = args['health'];
 
     this._harvested = "";
-    this._max_age = 30;
+    this._max_age = 10;
     // params
     // height_increment, max_growth_age, min_growth_age, max_fruits_per_year, fruit_name
 
@@ -141,11 +141,11 @@ class FruitTree {
     if(args.hasOwnProperty('height_increment'))
       this._height_increment = args['height_increment'];
 
-    this._max_growth_age = 20;
+    this._max_growth_age = 8;
     if(args.hasOwnProperty('max_growth_age'))
       this._max_growth_age = args['max_growth_age'];
 
-    this._min_growth_age = 3;
+    this._min_growth_age = 2;
     if(args.hasOwnProperty('min_growth_age'))
       this._min_growth_age = args['min_growth_age'];
 
@@ -321,7 +321,11 @@ class TreeGrove {
   }
 
   show_ages() {
-
+    let str = '';
+    for (let i = 0 ; i < this._trees.length ; i++) {
+      str += `${this._trees[i].fruit_name} tree, age=${this._trees[i].age}\n`;
+    }
+    console.log(str);
   }
 
   show_trees() {
@@ -342,12 +346,23 @@ class TreeGrove {
     }
   }
 
+  // return trees that stil bear fruit
   mature_trees() {
-
+    let str = "Mature Trees: \n";
+    for (let i = 0 ; i < this._trees.length ; i++) {
+      if (this._trees[i]._age >= this._trees[i]._min_growth_age && this._trees[i]._age <= this._trees[i]._max_growth_age)
+        str += `${this._trees[i].fruit_name} tree, age=${this._trees[i].age}\n`;
+    }
+    console.log(str);
   }
 
   dead_trees() {
-
+    let str = "Dead Trees: \n";
+    for (let i = 0 ; i < this._trees.length ; i++) {
+      if (!this._trees[i]._health)
+        str += `${this._trees[i].fruit_name} tree, health=${this._trees[i].health}, age=${this._trees[i].age}\n`;
+    }
+    console.log(str);
   }
 
 }
@@ -365,4 +380,17 @@ grove.show_trees()
 grove.nextYear();
 grove.show_trees()
 // console.log(grove._trees);
-//
+
+grove.show_ages();
+grove.mature_trees();
+grove.dead_trees(); // still no dead_trees
+
+
+grove.nextYear();
+grove.nextYear();
+grove.nextYear();
+
+
+grove.show_trees()
+
+grove.dead_trees();
