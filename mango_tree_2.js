@@ -115,15 +115,29 @@ console.log('The tree has met its end. :sad:');
 class FruitTree {
   constructor(args) {
     this._age = 0;
-    this._height = 0; // getRandomNumber();
+    if(args.hasOwnProperty('age'))
+      this._age = args['age'];
+
+    this._height = 0;
+    if(args.hasOwnProperty('height'))
+      this._height = args['height'];
+
     this._fruits = [];
-    this._harvested = "";
+    if(args.hasOwnProperty('number_of_fruits')) {
+      let num_fruits = args['number_of_fruits']
+      this.produceFruitsManual(num_fruits);
+    }
+
     this._health = true;
+    if(args.hasOwnProperty('health'))
+      this._health = args['health'];
+
+    this._harvested = "";
     this._max_age = 30;
     // params
     // height_increment, max_growth_age, min_growth_age, max_fruits_per_year, fruit_name
 
-    this._height_increment = 30; // in cm
+    this._height_increment = 0.5; // in m
     if(args.hasOwnProperty('height_increment'))
       this._height_increment = args['height_increment'];
 
@@ -167,6 +181,10 @@ class FruitTree {
     return this._health;
   }
 
+  get fruit_name() {
+    return this._fruit_name;
+  }
+
   grow() {
     if (this._health) {
       if(this._age < this._max_age)
@@ -195,8 +213,18 @@ class FruitTree {
     }
   }
 
+  produceFruitsManual(num) {
+    for (let i = 0 ; i < num ; i++) {
+      let fruit = new Fruit();
+      // count the mango qualities
+      fruit._quality == "good" ? this._countGood++ : this._countBad++;
+      // store the produced mangoes in fruits array
+      this._fruits.push(fruit);
+    }
+  }
+
   harvest() {
-    this.harvested = `${this._fruits.length} (${this._countGood} good, ${this._countBad} bad)`;
+    this.harvested = `Total ${this._fruit_name} fruits: ${this._fruits.length} (${this._countGood} good, ${this._countBad} bad)`;
 
     // after harvest, empty the fruits array, and reset count
     this._fruits = [];
@@ -235,7 +263,7 @@ do {
   tree.grow();
   tree.produceFruits();
   tree.harvest();
-  console.log(`[Year ${tree.age} Report] Height = ${tree.height} cm | Fruits harvested = ${tree.harvested}`)
+  console.log(`[Year ${tree.age} Report] Height = ${tree.height} | Fruits harvested = ${tree.harvested}`)
 } while (tree.health != false)
 
 console.log(`The ${tree._fruit_name} tree has met its end. :sad:`);
@@ -268,10 +296,73 @@ console.log(`The ${pearTree._fruit_name} tree has met its end. :sad:`);
 
 
 // Release 2
-class TreeGrove {}
+class TreeGrove {
+  constructor () {
+    this._trees = [];
+    // this._dead_trees = [];
+  }
+
+  inputTree(tree_type, age, height, number_of_fruits, health) {
+    // tree_type, age, height, number_of_fruits, health
+
+    switch(tree_type) {
+      case "MangoTree":
+        let mt = new MangoTree({age: age, height: height, number_of_fruits: number_of_fruits, health: health, fruit_name: "Mango"});
+        this._trees.push(mt);
+        break;
+      case "PearTree":
+        let pt = new PearTree({age: age, height: height, number_of_fruits: number_of_fruits, health: health, fruit_name: "Pear"});
+        this._trees.push(pt);
+        break;
+      default:
+        console.log("Wrong Tree Type");
+    }
+
+  }
+
+  show_ages() {
+
+  }
+
+  show_trees() {
+    let str = "";
+    for (let i = 0 ; i < this._trees.length ; i++) {
+      str += `${this._trees[i].fruit_name} tree, health=${this._trees[i].health}, age=${this._trees[i].age}, height=${this._trees[i].height}, total fruits=${this._trees[i].fruits.length} \n`
+    }
+
+    // return this._trees;
+    console.log(str);
+  }
+
+  nextYear() {
+    // grow the trees and producefruits
+    for (let i = 0 ; i < this._trees.length ; i++) {
+      this._trees[i].grow();
+      this._trees[i].produceFruits();
+    }
+  }
+
+  mature_trees() {
+
+  }
+
+  dead_trees() {
+
+  }
+
+}
 
 
+var grove = new TreeGrove();
 
+// grove.inputTree("MangoTree", 3, 1.8, 7, true);
+grove.inputTree("MangoTree", 3, 1.8, 7, true);
+grove.inputTree("MangoTree", 5, 2.4, 12, true);
+grove.inputTree("PearTree", 4, 1.2, 5, true);
+grove.inputTree("MangoTree", 7, 2, 15, true);
+grove.show_trees()
 
-
+grove.nextYear();
+grove.show_trees()
+// console.log(grove._trees);
 //
