@@ -247,7 +247,7 @@ let myAppleTree = new AppleTree({
   'maxAge': 7,
   'startingAge': 1,
   'maxFruitsHarvestedPerYear': randomGenerator(14, 22),
-  'maxFruitCapacity': randomGenerator(70, 112),
+  'maxFruitCapacity': randomGenerator(18, 24),
   'type': 'apple'
 })
 let myMangoTree = new MangoTree({
@@ -256,7 +256,7 @@ let myMangoTree = new MangoTree({
   'maxAge': 19,
   'startingAge': 4,
   'maxFruitsHarvestedPerYear': randomGenerator(21, 54),
-  'maxFruitCapacity': randomGenerator(90, 220),
+  'maxFruitCapacity': randomGenerator(20, 35),
   'type': 'mango'
 })
 
