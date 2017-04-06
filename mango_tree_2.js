@@ -346,22 +346,6 @@ class Mango extends Fruit{
   }
 }
 
-
-
-// var tree = new MangoTree(2, 2, 0, true);
-// console.log(`The tree is alive! :smile:`)
-//
-// do {
-//   tree.grow()
-//   tree.produceMangoes();
-//   // tree.harvest();
-//
-//   console.log(`[Year ${tree._umur} Report] Height = ${tree._tinggi} m |  Fruits harvested = ${tree._harvested} | healthy = ${tree._kesehatan} | buah = ${tree._buah.length}`);
-// } while (tree._kesehatan != false)
-//
-// console.log(`The tree has met its end. :sad:`);
-
-
 class AppleTree extends FruitTree {
 
   constructor(umur, tinggi, harvested, kesehatan) {
@@ -425,21 +409,6 @@ class Apple extends Fruit{
   }
 }
 
-
-
-// var tree = new AppleTree(2, 2, 0, true);
-// console.log(`The tree is alive! :smile:`)
-//
-// do {
-//   tree.grow()
-//   tree.produceApples();
-//   tree.harvest();
-//
-//   console.log(`[Year ${tree._umur} Report] Height = ${tree._tinggi} m |  Fruits harvested = ${tree._harvested} | healthy = ${tree._kesehatan}`);
-// } while (tree._kesehatan != false)
-//
-// console.log(`The tree has met its end. :sad:`);
-
 class PearTree extends FruitTree {
 
   constructor(umur, tinggi, harvested, kesehatan) {
@@ -502,22 +471,6 @@ class Pear extends Fruit{
     super();
   }
 }
-
-
-
-// var tree = new PearTree(2, 2, 0, true);
-// console.log(`The tree is alive! :smile:`)
-//
-// do {
-//   tree.grow()
-//   tree.producePears();
-//   tree.harvest();
-//
-//   console.log(`[Year ${tree._umur} Report] Height = ${tree._tinggi} m |  Fruits harvested = ${tree._harvested} | healthy = ${tree._kesehatan}`);
-// } while (tree._kesehatan != false)
-//
-// console.log(`The tree has met its end. :sad:`);
-
 
 // Release 2
 class TreeGrove {
