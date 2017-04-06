@@ -48,25 +48,17 @@ class FruitTree {
     this._healthy = bool;
   }
 
-  isMature(minBearingAge) {
-    if (this.age >= minBearingAge) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   grow(growRate, maxAge) {
-    this.age += 1;
-    this.fruit = [];
-    this.fruitCap = this.fruitCap - getRandomNumber(2);
-    let newHeight = this.height;
-    if (this.age < maxAge - 2) {
+    this._age += 1;
+    this._fruit = [];
+    this._fruitCap = this._fruitCap - getRandomNumber(2);
+    let newHeight = this._height;
+    if (this._age < maxAge - 5) {
       newHeight += growRate;
     }
-    this.height = Math.round(newHeight*10)/10;
-    if (this.age >= maxAge) {
-      this.healthy = false;
+    this._height = Math.round(newHeight*10)/10;
+    if (this._age >= maxAge) {
+      this._healthy = false;
     }
   }
 
@@ -113,7 +105,11 @@ class MangoTree extends FruitTree {
   }
 
   isMature() {
-    super.isMature(this.minBearingAge);
+    if (super.age >= this.minBearingAge) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   grow() {
@@ -122,7 +118,7 @@ class MangoTree extends FruitTree {
   }
 
   harvest() {
-    if (this.getHealthStatus()) {
+    if (this.getHealthStatus() && this.isMature()) {
       for (let i = 0; i < this.fruitCap; i++) {
         let mango = new Mango();
         this.mangoFruits.push(mango);
@@ -176,7 +172,7 @@ class AppleTree extends FruitTree {
   }
 
   harvest() {
-    if (this.isMature()) {
+    if (this.getHealthStatus() && this.isMature()) {
       for (let i = 0; i < this.fruitCap; i++) {
         let apple = new Apple();
         this.appleFruits.push(apple);
@@ -244,20 +240,16 @@ class TreeGrove {
   showTrees() {
     console.log(`Year ${this.year}`);
     for (let i = 0; i < this.fruitTrees.length; i++) {
-      console.log(`${this.fruitTrees[i].name}, age: ${this.fruitTrees[i].getAge()} years, height: ${this.fruitTrees[i].getHeight()} m, fruits: ${this.fruitTrees[i].fruits.length}, healthy: ${this.fruitTrees[i].getHealthStatus()}`);
+      console.log(`${this.fruitTrees[i].name}, age: ${this.fruitTrees[i].getAge()} years, height: ${this.fruitTrees[i].getHeight()} m, fruits: ${this.fruitTrees[i].fruits.length}, healthy: ${this.fruitTrees[i].getHealthStatus()}, mature: ${this.fruitTrees[i].isMature()}`);
 
     }
   }
 
   matureTrees() {
-    let msg = "";
     for (let i = 0; i < this.fruitTrees.length; i++) {
       if (this.fruitTrees[i].isMature() && this.fruitTrees[i].getHealthStatus()) {
-        msg = `${this.fruitTrees[i].isMature()}`;
-      } else {
-        msg = `no longer producing fruits`;
+        console.log(`${this.fruitTrees[i].name}, mature: ${this.fruitTrees[i].isMature()}`);
       }
-      console.log(`${this.fruitTrees[i].name}, mature: ${msg}`);
     }
   }
 
@@ -285,12 +277,12 @@ class TreeGrove {
 
 // Driver code
 let grove = new TreeGrove();
-grove.inputTree("MangoTree", 3, 1.8, 7, true);
+grove.inputTree("MangoTree", 3, 1.8, 10, true);
 grove.inputTree("MangoTree", 5, 2.4, 12, true);
-grove.inputTree("AppleTree", 4, 1.2, 5, true);
-grove.inputTree("AppleTree", 6, 1.5, 8, true);
+grove.inputTree("AppleTree", 4, 1.2, 15, true);
+grove.inputTree("AppleTree", 6, 1.5, 18, true);
 
-for (let i = 0; i < 15; i++) {
+for (let i = 0; i < 12; i++) {
   grove.nextYear();
   grove.showTrees();
   grove.deadTrees();
