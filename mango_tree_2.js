@@ -161,7 +161,9 @@ class TreeGrove {
 
   mature_trees(){
     this.trees.forEach((element)=>{
-      console.log(`${element._name} : berbuah sebanyak ${element._produce}`);
+      if(element._produce > element._age){
+        console.log(`${element._name} : berbuah sebanyak ${element._produce}`);
+      }
     })
   }
 
@@ -178,7 +180,7 @@ class TreeGrove {
 
 let grove = new TreeGrove()
 //input your trees data!
-grove.inputTree("ManggoTree", 3, 1.8, 7,true)
+grove.inputTree("ManggoTree", 0, 0, 0,true)
 grove.inputTree("ManggoTree", 5, 2.4, 12,true)
 grove.inputTree("AppleTree", 4, 1.2, 5,true)
 grove.inputTree("PearTree", 7, 2, 15,true)
@@ -194,10 +196,10 @@ grove.nextYear() //1
 grove.nextYear() //2
 grove.nextYear() //3
 grove.nextYear() //4
-grove.nextYear() //5
+// grove.nextYear() //5
 // console.log('=====================');
 // console.log(grove.trees);
-grove.nextYear() //6
+// grove.nextYear() //6
 // grove.nextYear() //7
 // grove.nextYear() //8
 // grove.nextYear() //9
