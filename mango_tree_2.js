@@ -30,7 +30,9 @@ class FruitTree {
 }
 
 class Fruit {
-
+  constructor(){
+    this._quality="";
+  }
 }
 
 class AppleTree extends FruitTree {
@@ -42,8 +44,8 @@ class AppleTree extends FruitTree {
   this._harvested=0;
   }
   fruitize() {
-    if (this.fruitlength>0){
-      for (let i=0; i<this.fruitlength; i++){
+    if (this._fruitlength>0){
+      for (let i=0; i<this._fruitlength; i++){
         var apple = new Apple();
         this._fruit.push(apple);
       }
@@ -68,6 +70,7 @@ class AppleTree extends FruitTree {
 
   // Grow the tree
   grow() {
+    this.produceApples();
     this._age += 1;
     if(this._age <= 8){
       this._height += Math.floor(Math.random()*3)+1;
@@ -79,7 +82,7 @@ class AppleTree extends FruitTree {
 
 
   produceApples() {
-    if(this._age <= 18 && this._fruit <= this._max){
+    if(this._age <= 18 && this._fruit.length <= this._max){
       for(let i=0; i<Math.floor(Math.random()*this._max)+5; i++) {
         var apple = new Apple();
         this._fruit.push(apple)
@@ -108,7 +111,7 @@ class AppleTree extends FruitTree {
 
 class Apple extends Fruit{
   constructor() {
-  this._quality = "";
+  super();
   this.qualitize();
   }
   qualitize() {
@@ -129,8 +132,8 @@ class PearTree extends FruitTree {
   this._harvested=0;
   }
   fruitize() {
-    if (this.fruitlength>0){
-      for (let i=0; i<this.fruitlength; i++){
+    if (this._fruitlength>0){
+      for (let i=0; i<this._fruitlength; i++){
         var pear = new Pear();
         this._fruit.push(pear);
       }
@@ -155,6 +158,7 @@ class PearTree extends FruitTree {
 
   // Grow the tree
   grow() {
+    this.producePears()
     this._age += 1;
     if(this._age <= 8){
       this._height += Math.floor(Math.random()*5)+1;
@@ -166,7 +170,7 @@ class PearTree extends FruitTree {
 
 
   producePears() {
-    if(this._age <= 17 && this._fruit <= this._max){
+    if(this._age <= 17 && this._fruit.length <= this._max){
       for(let i=0; i<Math.floor(Math.random()*this._max)+5; i++) {
         var pear = new Pear();
         this._fruit.push(pear)
@@ -195,7 +199,7 @@ class PearTree extends FruitTree {
 
 class Pear extends Fruit{
   constructor() {
-  this._quality = "";
+  super();
   this.qualitize();
   }
   qualitize() {
@@ -216,8 +220,8 @@ class MangoTree extends FruitTree {
   this._harvested=0;
   }
   fruitize() {
-    if (this.fruitlength>0){
-      for (let i=0; i<this.fruitlength; i++){
+    if (this._fruitlength>0){
+      for (let i=0; i<this._fruitlength; i++){
         var mango = new Mango();
         this._fruit.push(mango);
       }
@@ -242,6 +246,7 @@ class MangoTree extends FruitTree {
 
   // Grow the tree
   grow() {
+    this.produceMangoes()
     this._age += 1;
     if(this._age <= 10){
       this._height += Math.floor(Math.random()*3)+1;
@@ -253,7 +258,7 @@ class MangoTree extends FruitTree {
 
 
   produceMangoes() {
-    if(this._age <= 20 && this._fruit <= this._max){
+    if(this._age <= 20 && this._fruit.length <= this._max){
       for(let i=0; i<Math.floor(Math.random()*this._max)+5; i++) {
         var apple = new Apple();
         this._fruit.push(apple)
@@ -282,7 +287,7 @@ class MangoTree extends FruitTree {
 
 class Mango extends Fruit{
   constructor() {
-  this._quality = "";
+  super();
   this.qualitize();
   }
   qualitize() {
@@ -314,7 +319,7 @@ class TreeGrove {
   }
   showAges(){
     for (let i=0; i<this.trees.length; i++){
-      console.log(this.trees[i]._age)
+      console.log(`${this.trees[i]._kind}, age: ${this.trees[i]._age} years old`)
     }
   }
   showTrees(){
@@ -325,7 +330,7 @@ class TreeGrove {
   matureTrees(){
     for (let i=0; i<this.trees.length; i++){
       if (this.trees[i]._fruitlength > 0){
-        console.log(this.trees[i]._kind)
+        console.log(`${this.trees[i]._kind}, fruits: ${this.trees[i]._fruit.length}, height: ${this.trees[i]._height} m`)
       }
     }
   }
