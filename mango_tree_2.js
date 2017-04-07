@@ -82,65 +82,17 @@ class AppleTree extends FruitTree {
   constructor(name, age, height, health, max_fruit) {
     super(name, age, height, health, max_fruit, 10, 8)  // 10 (umur maksimal), 8(stop tumbuh)
   }
-
-  getRandomFruit(){
-    return super.getRandomFruit()
-  }
-
-  getRandomNumberHeight(){
-    return super.getRandomNumberHeight()
-  }
-
-  grow(){
-    return super.grow()
-  }
-
-  produceFruit(){
-    return super.produceFruit()
-  }
 }
 
 class PearTree extends FruitTree{
   constructor(name, age, height, health, max_fruit){
     super(name, age, height, health, max_fruit, 9, 8)  // 9 (umur maksimal), 8(stop tumbuh tingginya)
   }
-
-  getRandomFruit(){
-    return super.getRandomFruit()
-  }
-
-  getRandomNumberHeight(){
-    return super.getRandomNumberHeight()
-  }
-
-  grow(){
-    return super.grow()
-  }
-
-  produceFruit(){
-    return super.produceFruit()
-  }
 }
 
 class MangoTree extends FruitTree{
   constructor(name, age, height, health, max_fruit) {
     super(name, age, height, health, max_fruit, 10, 8);  // 10 (umur maksimal), 8(stop tumbuh tingginya)
-  }
-
-  getRandomFruit(){
-    return super.getRandomFruit()
-  }
-
-  getRandomNumberHeight(){
-    return super.getRandomNumberHeight()
-  }
-
-  grow(){
-    return super.grow()
-  }
-
-  produceFruit(){
-    return super.produceFruit()
   }
 }
 
