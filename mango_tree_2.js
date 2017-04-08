@@ -1,5 +1,4 @@
 "use strict"
-
 // Release 1
 class FruitTree {
   constructor(data) {
@@ -8,31 +7,52 @@ class FruitTree {
       this._height = data.height,
       this._fruits = data.fruits,
       this._healthy = data.healthy,
-      this._maxAge = data.maxAge
+      this._maxAge = data.maxAge,
+      this.good = 0,
+      this.bad = 0;
   }
-
   grow() {
-    this._age++
-      if (this._age === this._maxAge) {
-        this._healthy = false;
-      } else
-    if (this._age < 50) {
+    this._age++;
+    if (this._age >= this._maxAge) {
+      this._healthy = false;
+    } else {
       this._height += getRandomNumber()
     }
   }
   produces() {
     let fruit_condition = new Fruit();
-    let produces_fruits = [];
+    let produces_fruits = []
     if (this._healthy !== false) {
       for (let i = 0; i < getRandomFruit(1, 9); i++) {
         produces_fruits.push(fruit_condition)
       }
       this._fruits += produces_fruits.length
+      for (let j = 0; j < produces_fruits.length; j++) {
+        if (produces_fruits[j].quality === "Good") {
+          this.good += 1
+        } else {
+          this.bad += 1
+        }
+      }
     }
-
+  }
+  quality_on() {
+    let fruit_condition = new Fruit();
+    let produces_fruits = []
+    if (this._fruits > 0) {
+      for (let i = 0; i < this._fruits; i++) {
+        produces_fruits.push(fruit_condition)
+      }
+      for (let j = 0; j < produces_fruits.length; j++) {
+        if (produces_fruits[j].quality === "Good") {
+          this.good += 1
+        } else {
+          this.bad += 1
+        }
+      }
+    }
   }
 }
-
 class Fruit {
   constructor() {
     this.quality = this.quality()
@@ -45,7 +65,6 @@ class Fruit {
     }
   }
 }
-
 // Release 0
 class AppleTree extends FruitTree {
   constructor(data) {
@@ -63,7 +82,6 @@ class Apple extends Fruit {
     super(quality)
   }
 }
-
 class MangoTree extends FruitTree {
   constructor(data) {
     super(data)
@@ -80,7 +98,6 @@ class Mango extends Fruit {
     super(quality)
   }
 }
-
 class PearTree extends FruitTree {
   constructor(data) {
     super(data)
@@ -97,7 +114,6 @@ class Pear extends Fruit {
     super(quality)
   }
 }
-
 // Release 2
 class TreeGrove {
   constructor() {
@@ -146,7 +162,9 @@ class TreeGrove {
         })
         //break;
     }
+    grove.quality_on()
     this.trees_grove.push(grove)
+    //console.log(typeof grove)
   }
   next_year() {
     this.trees_grove.forEach((value) => {
@@ -168,7 +186,7 @@ class TreeGrove {
   }
   mature_trees() {
     this.trees_grove.forEach((value) => {
-      console.log(`${value._name}, total fruit harvest : ${value._fruits}`)
+      console.log(`${value._name}, total fruit harvest : ${value._fruits} | (${value.good} good, ${value.bad} bad)`)
     })
   }
   dead_trees() {
@@ -187,10 +205,8 @@ function getRandomFruit(min, max) {
 function getRandomNumber() {
   return Math.floor(Math.random() * 20) / 10;
 }
-
 let grove = new TreeGrove()
-grove.inputTree("MangoTree", 3, 1.8, 7, true, 10) // name, age, height, fruits, healthy, maxAge, 
-grove.inputTree("MangoTree", 5, 2.4, 12, true, 10)
+grove.inputTree("MangoTree", 3, 1.8, 7, true, 10) // name, age, height, fruits, healthy, maxAge,
 grove.inputTree("AppleTree", 4, 1.2, 5, true, 12)
 grove.inputTree("PearTree", 7, 2, 15, true, 15)
 grove.next_year()
@@ -200,16 +216,6 @@ grove.next_year()
 grove.next_year()
 grove.next_year()
 grove.next_year()
-grove.next_year()
-grove.next_year()
-grove.next_year()
-grove.next_year()
-grove.next_year()
-grove.next_year()
-grove.next_year()
-grove.next_year()
-grove.next_year()
-
 // show trees age
 grove.show_trees()
 console.log('------------------------------------------------')
