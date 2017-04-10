@@ -240,7 +240,7 @@ class TreeGrove {
   showTrees() {
     console.log(`Year ${this.year}`);
     for (let i = 0; i < this.fruitTrees.length; i++) {
-      console.log(`${this.fruitTrees[i].name}, age: ${this.fruitTrees[i].getAge()} years, height: ${this.fruitTrees[i].getHeight()} m, fruits: ${this.fruitTrees[i].fruits.length}, healthy: ${this.fruitTrees[i].getHealthStatus()}, mature: ${this.fruitTrees[i].isMature()}`);
+      console.log(`${this.fruitTrees[i].name}, age: ${this.fruitTrees[i].getAge()} years, height: ${this.fruitTrees[i].getHeight()} m, fruits: ${this.fruitTrees[i].fruits.length}, healthy: ${this.fruitTrees[i].getHealthStatus()}`);
 
     }
   }
