@@ -14,7 +14,6 @@ class FruitTree {
         this.mature = 'false';
         this.buah = [];
         this.MAX_BUAH = Math.floor((Math.random() * 10) + 1)
-
     }
 
     grow() {
@@ -31,14 +30,9 @@ class FruitTree {
                 this.height = this._maxHeigtht;
             }
         }
-
         if (this.age >= this.harvestAge) {
             this.produceFruit()
         }
-
-
-
-
     }
 
     produceFruit() {
@@ -51,10 +45,8 @@ class FruitTree {
 
 
     harvest() {
-
         if (this.buah.length === 0) {
             console.log(`${this.species} belum atau tidak berbuah`)
-
         } else {
             let bagus = 0;
             for (let i = 0; i < this.buah.length; i++) {
@@ -65,14 +57,7 @@ class FruitTree {
             console.log(`${this.species} = jumlah buah :  ${this.buah.length}  | bagus :  ${bagus}  jelek : ${this.buah.length-bagus}`);
         }
         this.buah = [];
-
-
     }
-
-
-
-
-
 }
 
 class Fruit {
@@ -91,35 +76,25 @@ class Fruit {
 class AppleTree extends FruitTree {
     constructor(species, age, height, harvestAge, health) {
         super(species, age, height, harvestAge, health);
-
     }
-
 }
 
 class MangoTree extends FruitTree {
     constructor(species, age, height, harvestAge, health) {
         super(species, age, height, harvestAge, health);
-
     }
-
 }
 
 class PearTree extends FruitTree {
     constructor(species, age, height, harvestAge, health) {
         super(species, age, height, harvestAge, health);
-
     }
-
 }
 
 
 class Apple extends Fruit {
-    constructor() {
-
-    }
+    constructor() {}
 }
-
-
 
 // Release 2
 class TreeGrove {
@@ -143,17 +118,12 @@ class TreeGrove {
 
     }
 
-
-
     show_tree() {
         let temp = '';
         for (let i = 0; i < this.grove.length; i++) {
             temp = temp + ' ' + this.grove[i].species;
-
         }
         console.log(temp);
-
-
     }
 
     mature_trees() {
@@ -170,8 +140,6 @@ class TreeGrove {
         } else {
             console.log(temp);
         }
-
-
     }
 
     dead_trees() {
@@ -186,39 +154,26 @@ class TreeGrove {
         } else {
             console.log(temp);
         }
-
-
-
-
-
     }
+
     harvestGrove() {
         for (let i = 0; i < this.grove.length; i++) {
             this.grove[i].harvest();
         }
-
-
     }
-
-
 
 
     nextYear() {
         for (let i = 0; i < this.grove.length; i++) {
             this.grove[i].grow();
         }
-
-
     }
 
     show_age() {
         for (let i = 0; i < this.grove.length; i++) {
             console.log(`${this.grove[i].species} : ${this.grove[i].age}`);
         }
-
     }
-
-
 }
 
 var Grove = new TreeGrove()
@@ -239,7 +194,7 @@ Grove.inputTree('PearTree', 7, 2, 15, true);
 // Grove.mature_trees();
 // Grove.nextYear();
 // Grove.mature_trees();
-// Grove.show_age();
+
 // Grove.dead_trees();
 //
 // Grove.nextYear();
@@ -254,6 +209,7 @@ Grove.inputTree('PearTree', 7, 2, 15, true);
 Grove.harvestGrove();
 Grove.nextYear();
 Grove.nextYear();
+Grove.show_age();
 Grove.nextYear();
 Grove.mature_trees();
 Grove.harvestGrove();
