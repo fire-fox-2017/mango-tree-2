@@ -251,17 +251,17 @@ class Mango extends Fruit {
 }
 
 
-var tree = new MangoTree({fruit_name: "Mango"});
-console.log(`The ${tree._fruit_name} tree is alive! :smile:`);
-
-do {
-  tree.grow();
-  tree.produceFruits();
-  tree.harvest();
-  console.log(`[Year ${tree.age} Report] Height = ${tree.height} m | Fruits harvested = ${tree.harvested}`)
-} while (tree.health != false)
-
-console.log(`The ${tree._fruit_name} tree has met its end. :sad:`);
+// var tree = new MangoTree({fruit_name: "Mango"});
+// console.log(`The ${tree._fruit_name} tree is alive! :smile:`);
+//
+// do {
+//   tree.grow();
+//   tree.produceFruits();
+//   tree.harvest();
+//   console.log(`[Year ${tree.age} Report] Height = ${tree.height} m | Fruits harvested = ${tree.harvested}`)
+// } while (tree.health != false)
+//
+// console.log(`The ${tree._fruit_name} tree has met its end. :sad:`);
 
 
 class PearTree extends FruitTree {
@@ -276,17 +276,18 @@ class Pear extends Fruit {
   }
 }
 
-var pearTree = new PearTree({fruit_name: "Pear"});
-console.log(`The ${pearTree._fruit_name} tree is alive! :smile:`);
+//var pearTree = new PearTree({fruit_name: "Pear"});
+// console.log(`The ${pearTree._fruit_name} tree is alive! :smile:`);
 
-do {
-  pearTree.grow();
-  pearTree.produceFruits();
-  pearTree.harvest();
-  console.log(`[Year ${pearTree.age} Report] Height = ${pearTree.height} m | Fruits harvested = ${pearTree.harvested}`)
-} while (pearTree.health != false)
+// do {
+//   pearTree.grow();
+//   pearTree.produceFruits();
+//   pearTree.harvest();
+//   } while (pearTree.health != false)
+// //   console.log(`[Year ${pearTree.age} Report] Height = ${pearTree.height} m | Fruits harvested = ${pearTree.harvested}`)
+//
 
-console.log(`The ${pearTree._fruit_name} tree has met its end. :sad:`);
+// console.log(`The ${pearTree._fruit_name} tree has met its end. :sad:`);
 
 
 
